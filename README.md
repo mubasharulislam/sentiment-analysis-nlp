@@ -9,21 +9,23 @@ The project is designed as an academic demonstration of how linguistic theory an
 
 # Research Motivation
 
-The project was motivated by an interest in the intersection of linguistics and artificial intelligence, particularly how computational techniques can be used to analyze meaning, emotion, and language patterns in textual data.
+Sentiment analysis is a fundamental task in Natural Language Processing, widely used in applications such as social media monitoring, product reviews, and customer feedback analysis. Understanding human emotions and opinions from text is essential for decision-making in both academic and industrial contexts.
 
-It also reflects an academic interest in Linguistic Data Science, where traditional linguistic concepts such as morphology, lexical processing, and phrase-level analysis are combined with machine learning methodologies.
+This project is motivated by the intersection of linguistics and machine learning, focusing on how linguistic preprocessing techniques—such as lemmatization, stopword removal, and normalization—can enhance the performance of traditional classification models.
+
+Rather than relying solely on complex deep learning architectures, this work explores how well-structured linguistic features combined with classical machine learning algorithms can achieve meaningful and interpretable results. The goal is to bridge the gap between raw textual data and structured insights through efficient and explainable NLP methods.
 
 ---
 
 # Dataset
 
-The dataset consists of short English text samples labeled into sentiment categories such as positive, negative, and neutral. The data was obtained from publicly available sentiment analysis resources and adapted for educational and experimental purposes.
+The dataset used in this project consists of short English text samples labeled into three sentiment categories: positive, negative, and neutral. It is derived from publicly available sentiment analysis datasets and adapted for experimental and educational purposes.
 
-The final dataset used in this project contains approximately 6,900 labeled text samples.
+The final dataset contains approximately 6,900 labeled instances. Each sample represents a short sentence or phrase expressing an opinion or emotional tone, making it suitable for supervised classification tasks.
 
-The project uses a controlled experimental setting intended to demonstrate NLP methodology and linguistic preprocessing rather than large-scale industrial performance optimization.
+To ensure consistency and model compatibility, the dataset was preprocessed using linguistic techniques including text normalization, lowercasing, noise removal, and lemmatization. Stopwords and punctuation were also removed to retain only meaningful lexical features.
 
----
+It is important to note that this dataset is relatively small and may not fully capture the complexity of real-world language, such as sarcasm, contextual ambiguity, or domain-specific expressions. Therefore, the results should be interpreted as a demonstration of methodology rather than large-scale production performance.
 
 # Tools & Libraries
 
@@ -39,80 +41,65 @@ The project uses a controlled experimental setting intended to demonstrate NLP m
 
 # Methodology
 
-The workflow follows a standard NLP pipeline consisting of several preprocessing, feature extraction, and machine learning stages.
+This project follows a structured Natural Language Processing (NLP) pipeline combining linguistic preprocessing with classical machine learning models for sentiment classification.
 
-## 1. Text Preprocessing
+### Text Preprocessing
 
-The textual data undergoes multiple normalization and linguistic preprocessing steps, including:
+Raw text data was normalized to improve consistency and reduce noise. The preprocessing steps include:
 
-* Lowercasing
-* Noise and punctuation removal
-* Tokenization
-* Stopword removal
-* Lemmatization using spaCy
+- Lowercasing all text  
+- Removing non-alphabetic characters and punctuation  
+- Tokenization using spaCy  
+- Lemmatization to reduce words to their base forms  
+- Removal of stopwords to retain meaningful lexical features  
 
-These steps reduce lexical variation and improve the quality of machine learning features.
+These steps help transform unstructured text into a clean and linguistically meaningful representation.
 
----
+### Feature Extraction
 
-## 2. Feature Extraction
+The processed text was converted into numerical features using TF-IDF (Term Frequency–Inverse Document Frequency) vectorization. This approach captures the relative importance of words across the dataset.
 
-The processed text is transformed into numerical representations using TF-IDF vectorization.
+- N-gram range: (1,2), including unigrams and bigrams to capture both individual word importance and short contextual phrases
+- Maximum features: limited to control dimensionality  
 
-The model incorporates:
+This ensures a balance between expressiveness and computational efficiency.
 
-* Unigrams
-* Bigrams
+### Model Training
 
-This enables the system to capture both individual lexical items and phrase-level contextual information.
+Three classical machine learning models were implemented and compared:
 
----
+- Logistic Regression (robust and interpretable)  
+- Multinomial Naive Bayes (efficient for text classification)  
+- Linear Support Vector Machine (effective in high-dimensional spaces)  
 
-## 3. Machine Learning Models
+The dataset was split into training and testing sets using an 80/20 ratio with a fixed random state for reproducibility.
 
-Multiple supervised machine learning algorithms were trained and evaluated:
+### Evaluation
 
-* Logistic Regression
-* Multinomial Naive Bayes
-* Linear Support Vector Machine (SVM)
+Model performance was evaluated using:
 
-The comparative approach allows observation of how different statistical models perform on sentiment classification tasks.
+- Accuracy score  
+- Confusion matrix for class-wise analysis  
 
----
+This allows a better understanding of misclassification patterns across sentiment classes.
 
-# Evaluation Metrics
+### Design Choice
 
-The models were evaluated using:
-
-* Accuracy Score
-* Confusion Matrix
-* Comparative model prediction analysis
-
-Future extensions may incorporate:
-
-* Precision
-* Recall
-* F1-score
-* Cross-validation techniques
-
-for deeper performance evaluation.
+Instead of deep learning approaches, this project emphasizes interpretable and computationally efficient models. The goal is to demonstrate how effective linguistic preprocessing combined with classical machine learning can be for sentiment analysis tasks.
 
 ---
 
 # Linguistic Relevance
 
-This project incorporates important linguistic concepts central to computational linguistics and NLP research.
+This project incorporates key linguistic principles to enhance sentiment analysis through structured text processing.
 
-These include:
+Lemmatization is used for morphological normalization, reducing inflected forms of words to their base representations. For example, words like “running”, “ran”, and “runs” are all mapped to “run”, allowing the model to treat them as the same semantic unit and avoid redundancy.
 
-* Morphological normalization through lemmatization
-* Lexical simplification
-* Phrase-level analysis using n-grams
-* Context-sensitive textual representation
+The use of n-grams (unigrams and bigrams) enables the model to capture both individual word meanings and short contextual patterns. For instance, the word “good” alone conveys positive sentiment, but the phrase “not good” reverses that meaning. Bigrams help capture such contextual relationships that single words may miss.
 
-The project demonstrates how theoretical linguistic concepts can inform machine learning workflows and contribute to computational text analysis.
+Stopword removal focuses the analysis on content-bearing words. Words like “the”, “is”, and “and” are removed because they do not contribute meaningful sentiment, whereas words like “amazing”, “terrible”, or “boring” carry strong emotional weight.
 
-The overall approach reflects the interdisciplinary nature of Linguistic Data Science, combining language theory, statistical modeling, and computational methods.
+Overall, the approach demonstrates how linguistic structure—morphology, lexical meaning, and local context—can directly support machine learning models in extracting meaningful patterns from text.
 
 ---
 
@@ -133,16 +120,23 @@ sentiment-analysis-nlp/
 
 # Limitations
 
-Due to the controlled experimental setting and moderate dataset scale, the project prioritizes methodological demonstration and linguistic analysis over production-level predictive performance.
+## Limitations
 
-The emphasis of the project is on:
+This project is designed as a controlled experimental study, prioritizing methodological clarity over production-scale performance.
 
-* NLP workflow design
-* linguistic preprocessing
-* feature engineering
-* comparative model experimentation
+- **Dataset Scale and Diversity**  
+  The dataset (~6,900 samples) is relatively small and may not capture the full variability of real-world language, potentially limiting generalization.
 
-rather than large-scale deployment optimization.
+- **Contextual Understanding**  
+  The TF-IDF representation treats text as independent tokens and does not model deeper contextual relationships or long-range dependencies.
+
+- **Handling of Complex Language Phenomena**  
+  The model has limited ability to interpret sarcasm, irony, or context-sensitive sentiment expressions.
+
+- **Model Complexity**  
+  The use of classical machine learning models favors interpretability and efficiency but may underperform compared to modern deep learning approaches in complex scenarios.
+
+Overall, these limitations reflect a deliberate design choice to emphasize interpretability, linguistic preprocessing, and foundational NLP techniques.
 
 ---
 
@@ -163,6 +157,10 @@ These directions would further strengthen the intersection between linguistics, 
 
 # Conclusion
 
-This project demonstrates how linguistic preprocessing techniques and machine learning algorithms can be integrated to perform sentiment analysis on textual data.
+This project demonstrates how linguistic preprocessing techniques can be effectively combined with classical machine learning models to perform sentiment analysis on textual data.
 
-By combining computational methods with linguistic theory, the project highlights the practical relevance of NLP within Linguistic Data Science and provides a foundational framework for future experimentation in computational text analysis.
+The results show that even with a relatively simple pipeline—based on TF-IDF features and traditional classifiers—it is possible to achieve meaningful performance. The integration of linguistic concepts such as lemmatization and phrase-level analysis further enhances the model’s ability to capture sentiment-related patterns.
+
+Rather than focusing on complex deep learning architectures, this work highlights the value of interpretable and computationally efficient approaches. It emphasizes that well-structured preprocessing and feature engineering remain critical components of successful NLP systems.
+
+Overall, this project reflects the intersection of linguistics and data science, demonstrating how theoretical insights can be translated into practical machine learning applications.
