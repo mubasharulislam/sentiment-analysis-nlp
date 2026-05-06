@@ -11,7 +11,7 @@ The project is designed as an academic demonstration of how linguistic theory an
 
 Sentiment analysis is a fundamental task in Natural Language Processing, widely used in applications such as social media monitoring, product reviews, and customer feedback analysis. Understanding human emotions and opinions from text is essential for decision-making in both academic and industrial contexts.
 
-This project is motivated by the intersection of linguistics and machine learning, focusing on how linguistic preprocessing techniques—such as lemmatization, stopword removal, and normalization—can enhance the performance of traditional classification models.
+This project is motivated by the intersection of linguistics and machine learning, focusing on how linguistic preprocessing techniques such as lemmatization, stopword removal, and normalization can enhance the performance of traditional classification models.
 
 Rather than relying solely on complex deep learning architectures, this work explores how well-structured linguistic features combined with classical machine learning algorithms can achieve meaningful and interpretable results. The goal is to bridge the gap between raw textual data and structured insights through efficient and explainable NLP methods.
 
@@ -159,7 +159,7 @@ These directions would further strengthen the intersection between linguistics, 
 
 This project demonstrates how linguistic preprocessing techniques can be effectively combined with classical machine learning models to perform sentiment analysis on textual data.
 
-The results show that even with a relatively simple pipeline—based on TF-IDF features and traditional classifiers—it is possible to achieve meaningful performance. The integration of linguistic concepts such as lemmatization and phrase-level analysis further enhances the model’s ability to capture sentiment-related patterns.
+The results show that even with a relatively simple pipeline based on TF-IDF features and traditional classifiers, meaningful performance can be achieved. The integration of linguistic concepts such as lemmatization and phrase-level analysis further enhances the model’s ability to capture sentiment-related patterns.
 
 Rather than focusing on complex deep learning architectures, this work highlights the value of interpretable and computationally efficient approaches. It emphasizes that well-structured preprocessing and feature engineering remain critical components of successful NLP systems.
 
