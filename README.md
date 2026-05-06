@@ -83,6 +83,10 @@ Model performance was evaluated using:
 
 This allows a better understanding of misclassification patterns across sentiment classes.
 
+## Model Performance
+
+![Accuracy](accuracy.png)
+
 ### Design Choice
 
 Instead of deep learning approaches, this project emphasizes interpretable and computationally efficient models. The goal is to demonstrate how effective linguistic preprocessing combined with classical machine learning can be for sentiment analysis tasks.
